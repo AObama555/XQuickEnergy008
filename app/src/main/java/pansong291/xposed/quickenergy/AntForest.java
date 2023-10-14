@@ -417,7 +417,7 @@ public class AntForest {
                                     if (collected > 0) {
                                         totalCollected += collected;
                                         Statistics.addData(Statistics.DataType.COLLECTED, collected);
-                                        String msg = "收取金球🍯浇水[" + collected + "g]";
+                                        String msg = "收取金球🟡浇水[" + collected + "g]";
                                         Log.forest(msg);
                                         AntForestToast.show(msg);
                                     } else {
@@ -433,7 +433,7 @@ public class AntForest {
                                     collected = joEnergy.getInt("energy");
                                     totalCollected += collected;
                                     Statistics.addData(Statistics.DataType.COLLECTED, collected);
-                                    String msg = "收取金球🍯复活[" + collected + "g]";
+                                    String msg = "收取金球🟡复活[" + collected + "g]";
                                     Log.forest(msg);
                                     AntForestToast.show(msg);
                                 } else {
@@ -486,7 +486,7 @@ public class AntForest {
                             String shortDay = extInfo.getString("shortDay");
                             jo = new JSONObject(AntForestRpcCall.collectAnimalRobEnergy(propId, propType, shortDay));
                             if ("SUCCESS".equals(jo.getString("resultCode"))) {
-                                Log.forest("动物能量🦩[" + energy + "g]");
+                                Log.forest("动物能量🦠[" + energy + "g]");
                             } else {
                                 Log.recordLog("收取动物能量失败:" + jo.getString("resultDesc"), jo.toString());
                             }
@@ -718,7 +718,7 @@ public class AntForest {
                 if (collected > 0) {
                     totalCollected += collected;
                     Statistics.addData(Statistics.DataType.COLLECTED, collected);
-                    String str = "收取能量🪂[" + FriendIdMap.getNameById(userId) + "]#" + collected + "g"
+                    String str = "收取能量🧚🏿‍♀️[" + FriendIdMap.getNameById(userId) + "]☪" + collected + "g"
                             + (StringUtil.isEmpty(extra) ? "" : "[" + extra + "]");
                     Log.forest(str);
                     AntForestToast.show(str);
@@ -1295,7 +1295,7 @@ public class AntForest {
                             JSONObject animal = data.getJSONObject("animal");
                             String ecosystem = animal.getString("ecosystem");
                             String name = animal.getString("name");
-                            Log.forest("神奇物种🦕[" + ecosystem + "]#" + name);
+                            Log.forest("神奇物种🦖[" + ecosystem + "]#" + name);
                         } else {
                             Log.i(TAG, jo.getString("resultDesc"));
                         }
@@ -1472,7 +1472,7 @@ public class AntForest {
                                 String patrolId = patrolConfig.getString("patrolId");
                                 resData = new JSONObject(AntForestRpcCall.switchUserPatrol(patrolId));
                                 if ("SUCCESS".equals(resData.getString("resultCode"))) {
-                                    Log.forest("巡逻⚖️-切换地图至" + patrolId);
+                                    Log.forest("巡逻🚔-切换地图至" + patrolId);
                                 }
                                 queryUserPatrol();
                                 return;
@@ -1500,7 +1500,7 @@ public class AntForest {
                         jo = new JSONObject(AntForestRpcCall.exchangePatrolChance(leftStep));
                         if ("SUCCESS".equals(jo.getString("resultCode"))) {
                             int addedChance = jo.optInt("addedChance", 0);
-                            Log.forest("步数兑换⚖️[巡护次数*" + addedChance + "]");
+                            Log.forest("步数兑换🐾[巡护次数*" + addedChance + "]");
                             queryUserPatrol();
                         } else {
                             Log.i(TAG, jo.getString("resultDesc"));
@@ -1537,7 +1537,7 @@ public class AntForest {
                     if (animalProp != null) {
                         JSONObject animal = animalProp.optJSONObject("animal");
                         if (animal != null) {
-                            Log.forest("巡护森林🏇🏻[" + animal.getString("name") + "碎片]");
+                            Log.forest("巡护森林🚓[" + animal.getString("name") + "碎片]");
                         }
                     }
                 }
@@ -1608,7 +1608,7 @@ public class AntForest {
                 String propId = main.getJSONArray("propIdList").getString(0);
                 jo = new JSONObject(AntForestRpcCall.AnimalConsumeProp(propGroup, propId, propType));
                 if ("SUCCESS".equals(jo.getString("resultCode"))) {
-                    Log.forest("巡护派遣🐆[" + name + "]");
+                    Log.forest("巡护派遣🦍[" + name + "]");
                     return true;
                 } else {
                     Log.i(TAG, jo.getString("resultDesc"));
@@ -1647,7 +1647,7 @@ public class AntForest {
                 if (canCombine) {
                     jo = new JSONObject(AntForestRpcCall.combineAnimalPiece(id, piecePropIds.toString()));
                     if ("SUCCESS".equals(jo.getString("resultCode"))) {
-                        Log.forest("合成动物💡[" + name + "]");
+                        Log.forest("合成动物🐝[" + name + "]");
                         combineAnimalPiece(id);
                     } else {
                         Log.i(TAG, jo.getString("resultDesc"));
